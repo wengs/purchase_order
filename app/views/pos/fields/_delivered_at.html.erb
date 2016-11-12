@@ -1,0 +1,8 @@
+<%= f.label :delivered_at, "Delivered Date & Time" %>
+<div id="datetimepicker1" class="input-group">
+  <span class="input-group-addon">
+    <%= f.text_field :delivered_at, class: "date-input-inline", style: "width:100%;", disabled: disabled %>
+    <span class="fa fa-calendar"></span>
+  </span>
+</div>
+<%= f.error :delivered_at %>

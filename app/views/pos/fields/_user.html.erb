@@ -1,0 +1,4 @@
+<%= f.simple_fields_for :user do |user_form| %>
+<%= user_form.input :name, as: :string, disabled: disabled, label: "Entered By", required: false, input_html: { value: f.object.user.present? ? f.object.user.name : current_user.name } %>
+<% end %>
+<%= f.input :user_id, as: :hidden %>

@@ -1,0 +1,15 @@
+<h3>Show PO</h3>
+<%= render partial: "layouts/partials/bootstrap_alerts" %>
+<%= render partial: 'pos/read_only_form', locals: { po: @po } %>
+
+<br class="clear-both" />
+<hr />
+<br />
+<div id="graphics-list-top-scroll-bar">
+  <div></div>
+</div>
+<div id="graphics-list">
+  <div class="media-body">
+    <%= render partial: "pos/read_only_graphics_list", locals: { graphics: @graphics, q: @q, path: edit_po_path(params[:id]) } %>
+  </div>
+</div>

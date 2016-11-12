@@ -1,0 +1,14 @@
+<div class="row">
+
+  <div class="col-md-12">
+
+    <div class="row">
+      <% Milestone::NAMES.each do |milestone| %>
+        <div class="col-md-4">
+          <%= label_tag milestone, t(milestone) %>
+          <%= text_field_tag t(milestone), format_date_time(graphic.milestone_date(milestone)), disabled: true %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

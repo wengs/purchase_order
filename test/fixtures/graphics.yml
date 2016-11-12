@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  quantity: 1
+  height: 9.99
+  width: 9.99
+  event_at: 2015-10-12
+  note: MyText
+  location: MyString
+  hardware_type: MyString
+  hardware_price: 9.99
+  rush: false
+
+two:
+  description: MyString
+  quantity: 1
+  height: 9.99
+  width: 9.99
+  event_at: 2015-10-12
+  note: MyText
+  location: MyString
+  hardware_type: MyString
+  hardware_price: 9.99
+  rush: false

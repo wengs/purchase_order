@@ -1,0 +1,9 @@
+<%= render partial: "layouts/partials/bootstrap_alerts" %>
+<br />
+Please import a csv/ excel file. The first row of the spreadsheet needs to be the header and to match the database attributes of the PO table.
+<br />
+<br />
+<%= simple_form_for :po_imports, url: po_imports_path, method: 'post' do |f| %>
+  <%= f.input :file, as: :file  %><br /><br />
+  <%= f.submit 'Import' %>
+<% end %>

@@ -1,0 +1,24 @@
+<h3>Edit PO</h3>
+<%= render partial: "layouts/partials/bootstrap_alerts" %>
+<%= render partial: 'form', locals: { po: @po, action: "update" } %>
+
+<br class="clear-both" />
+<hr />
+<% if current_user.can_create_graphic?(@po) %>
+  <%= link_to new_po_graphic_path(po_id: @po.id), class: "btn btn-success" do %>
+    <i class="fa fa-plus"></i> New Graphic
+  <% end %>
+<% end %>
+<br />
+<!-- <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#newGraphicFormModal">
+  <i class="fa fa-plus"></i> New Graphic
+</button> -->
+<br />
+<div id="graphics-list-top-scroll-bar">
+  <div></div>
+</div>
+<div id="graphics-list">
+  <div class="media-body">
+    <%= render partial: "graphics_list", locals: { graphics: @graphics, q: @q, path: edit_po_path(params[:id]) } %>
+  </div>
+</div>

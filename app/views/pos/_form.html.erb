@@ -1,0 +1,12 @@
+<%= simple_form_for po, url: { action: action, q: params[:q] ? params[:q] : "" }, html: { multipart: true } do |f| %>
+  <div id="po-details" class="pull-left col-md-10">
+    <%= render partial: 'pos/fields/po_details', locals: { po: po, f: f, action: action } %>
+  </div>
+  <br class="clear-both"/>
+  <br />
+
+  <div class="actions"  style= "margin-left: 18px;">
+    <%= f.submit action == "update" ? "Update PO" : "Create PO" , class: "submit-button pull-left", style: "margin-right: 20px;" %>
+    <%= link_to "Cancel", pos_path, class: 'btn btn-md btn-default pull-left' %>
+  </div>
+<% end %>

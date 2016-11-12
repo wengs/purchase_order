@@ -1,0 +1,49 @@
+<%= f.input :po_id, as: :hidden %>
+<div class="row">
+  <div class="col-md-12">
+    <%= f.input :description, as: :text, wrapper_html: { class: "description" } %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4"><%= f.input :width, label: "Width (in)" %></div>
+  <div class="col-md-4"><%= f.input :height, label: "Height (in)" %></div>
+  <div class="col-md-4"><%= f.association :substrate, collection: Substrate.order(:name), prompt: "-- Select Substrate --" %></div>
+</div>
+<div class="row">
+  <div class="col-md-12"><%= f.input :finishing, as: :text, wrapper_html: { class: "finishing" } %></div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= f.label "Qty per Version" %>
+    <table>
+      <tr>
+        <td colspan="1"><%= f.input :quantity, label: false, wrapper_html: { class: "quantity" } %></td>
+        <td colspan="1" style="width: 33.3%">each of</td>
+        <td colspan="1"><%= f.input :number_of_versions, label: false, wrapper_html: { class: "number-of-versions" } %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-4 col-md-offset-4">
+    <%= f.association :side, collection: Side.order(:name), prompt: "-- Select Side --" %>
+  </div>
+</div>
+<div class="row col-md-4">
+  <%= f.label :hardware_price %>
+  <div class="input-group">
+    <span class="input-group-addon" style="width: 20px !important;">$</span>
+    <%= f.input :hardware_price, label: false, as: :decimal, input_html: { value: f.object.hardware_price || '0.00' } %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <%= f.input :information_required, wrapper: :inline_checkbox, disabled: current_user.client? %>
+
+      <label class="text optional" for="po_notes_information_required">Notes <span class="text-red">(Information Required)</span></label>
+      <%= f.input :notes_information_required, as: :text, label: false, disabled: !f.object.information_required || current_user.client? %>
+
+      <%= f.input :files_needed, wrapper: :inline_checkbox, disabled: current_user.client? %>
+
+      <label class="text optional" for="po_notes_information_required">Notes <span class="text-red">(Files Needed)</span></label>
+      <%= f.input :notes_files_needed, as: :text, label: false, disabled: !f.object.files_needed || current_user.client? %>
+  </div>
+</div>

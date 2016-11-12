@@ -1,0 +1,37 @@
+<%= search_form_for q, url: path do |f| %>
+  <%= f.submit class: 'ransack-search-button' %>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <%= render partial: "pos/fields/graphics_list_header", locals: { graphics: graphics } %>
+      <%= render partial: "pos/fields/graphics_list_search_header", locals: { graphics: graphics, f: f } %>
+      <tbody>
+        <% graphics.each do |graphic| %>
+          <tr>
+            <td id="graphic-tools">
+              <%= link_to graphic_path(graphic), class: 'btn btn-xs btn-success' do %>
+                <i class="fa fa-eye"></i> View
+              <% end %>
+              <%= link_to edit_graphic_path(graphic), class: 'btn btn-xs btn-success' do %>
+                <i class="fa fa-edit"></i> Edit
+              <% end %>
+              <% if !current_user.client? || milestone_before_quote_submitted?(graphic.po) %>
+                <%= link_to graphic_path(graphic, q: params[:q]), method: :delete, data: { confirm: 'Are you sure that you want to delete this graphic?' }, class: 'btn btn-xs btn-danger' do %>
+                  <i class="fa fa-close"></i> Delete
+                <% end %>
+              <% end %>
+            <%= render partial: "graphics_list_flag_column", locals: { graphics: graphics, graphic: graphic } %>
+            <td><%= graphic.description %></td>
+            <td class="text-centered"><%= graphic.width %></th>
+            <td class="text-centered"><%= graphic.height %></td>
+            <td><%= graphic.substrate.name if graphic && graphic.substrate %></td>
+            <td><%= graphic.finishing %></td>
+            <td class="text-centered"><%= graphic.quantity %> each of <%= graphic.number_of_versions %></td>
+            <td><%= graphic.side.name if graphic && graphic.side %></td>
+            <td class="text-centered"><%= '$ ' + graphic.hardware_price.to_s if graphic.hardware_price %></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+<% end %>

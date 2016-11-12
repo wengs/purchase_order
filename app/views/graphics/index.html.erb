@@ -1,0 +1,93 @@
+<%= render partial: "layouts/partials/bootstrap_alerts" %>
+
+<h3>Graphics</h3>
+<br>
+<div class="row">
+  <div class="col-md-2">
+    <!-- New Graphic button -->
+    <%= link_to new_po_path, class: 'btn btn-md btn-success' do %>
+      <i class="fa fa-plus"></i> New PO
+    <% end %>
+  </div>
+  <div class="col-md-1">
+    <!-- New Graphic button -->
+    <%= link_to new_graphic_path, class: 'btn btn-md btn-success' do %>
+      <i class="fa fa-plus"></i> New Graphic
+    <% end %>
+  </div>
+</div>
+
+<br>
+<%= paginate @graphics %>
+<!-- Graphics listing -->
+<div class="media">
+  <div class="media-body">
+    <%= search_form_for @q do |f| %>
+      <%= f.submit class: 'ransack-search-button' %>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Tools</th>
+              <th>PO Code</th>
+              <th>Graphic #</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>At Event Date</th>
+              <th>Location</th>
+              <th>Content Notes</th>
+              <th>Cost</th>
+              <% if current_user.admin? %>
+                <th>Vendor Cost</th>
+              <% end %>
+            </tr>
+
+          </thead>
+          <thead>
+            <th><%= link_to 'Reset', graphics_path, class: 'btn btn-xs btn-default reset' %></th>
+            <th></th>
+            <th><%= f.search_field :graphic_number_cont, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :description_cont, placeholder: 'Filter' %></th>
+            <th></th>
+            <th><%= f.search_field :event_at_eq, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :location_cont, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :note_cont, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :hardware_price_eq, placeholder: 'Filter' %></th>
+            <% if current_user.admin? %>
+              <th><%= f.search_field :hardware_price_eq, placeholder: 'Filter' %></th>
+            <% end %>
+          </thead>
+
+          <tbody>
+            <% @graphics.each do |graphic| %>
+              <tr>
+                <td>
+                  <%= link_to graphic, class: 'btn btn-xs btn-success' do %>
+                    <i class="fa fa-eye"></i> Show
+                  <% end %>
+                  <%= link_to edit_graphic_path(graphic), class: 'btn btn-xs btn-success' do %>
+                    <i class="fa fa-edit"></i> Edit
+                  <% end %>
+                </td>
+                <td><%= graphic.po.po_code %></td>
+                <td><%= graphic.graphic_number %></td>
+                <td><%= graphic.description %></td>
+                <td><%= graphic.status ? graphic.status : 'Needs Update' %></td>
+                <td><%= graphic.event_at %></td>
+                <td><%= graphic.location %></td>
+                <td><%= graphic.note %></td>
+                <td><%= '$' + graphic.hardware_price.to_s if graphic.hardware_price %></td>
+              <% end %>
+              <% if current_user.admin? %>
+                <td></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= paginate @graphics %>
+
+<br>

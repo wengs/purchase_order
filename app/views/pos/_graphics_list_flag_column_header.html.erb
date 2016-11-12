@@ -1,0 +1,5 @@
+<% if graphics.map(&:information_required).include?(true) %>
+  <th class="text-red">Information Required</th>
+<% elsif graphics.map(&:files_needed).include?(true) %>
+  <th class="text-red">Files Needed</th>
+<% end %>

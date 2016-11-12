@@ -1,0 +1,40 @@
+<div class="col-md-4">
+  <%= simple_form_for user, url: { action: action, q: params[:q] ? params[:q] : "" }, html: { multipart: true } do |f| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h4>
+
+        <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: "manage" %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email, class: "manage" %>
+    </div>
+     <div class="field">
+      <%= f.label :password %><br><br />
+      <%= f.input :password, as: :password, label: false, autocomplete: "off", input_html: { class: "manage" } %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br><br />
+      <%= f.input :password_confirmation, as: :password, label: false, autocomplete: "off", input_html: { class: "manage" } %>
+    </div>
+    <div class="field">
+      <%= f.label :role %><br>
+      <%= f.association :role, label: false, collection: Role.all.order(name: :asc).map { |role| [t(role.name), role.id] }, include_blank: false %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit action == "update" ? "Update" : "Create", class: "submit-button pull-left", style: "margin-right: 20px" %>
+      <%= link_to 'Back', users_path, class: 'btn btn-md btn-default pull-left' %>
+    </div>
+  </div>
+<% end %>

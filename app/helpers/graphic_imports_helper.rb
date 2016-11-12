@@ -1,0 +1,2 @@
+module GraphicImportsHelper
+end

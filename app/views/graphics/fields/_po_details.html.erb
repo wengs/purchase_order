@@ -1,0 +1,15 @@
+<%= f.simple_fields_for :po do |po_form| %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= po_form.input :event_name, disabled: true, wrapper_html: { class: 'event-name' } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= po_form.input :job_code, disabled: true%>
+    </div>
+    <div class="col-md-6">
+      <%= po_form.input :po_code, disabled: true %>
+    </div>
+  </div>
+<% end %>

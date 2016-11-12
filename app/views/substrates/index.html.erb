@@ -1,0 +1,52 @@
+<%= render partial: "layouts/partials/bootstrap_alerts" %>
+
+<h3>Substrates</h3>
+<br>
+<div class="col-md-6">
+  <div class="row">
+    <div class="col-md-2">
+      <!-- New Substrate Button -->
+      <%= link_to new_substrate_path, class: 'btn btn-md btn-success' do %>
+        <i class="fa fa-plus"></i> New Substrate
+      <% end %>
+    </div>
+  </div>
+
+  <br>
+  <%= paginate @substrates %>
+  <!-- Substrates Listing -->
+
+  <%= search_form_for @q do |f| %>
+    <%= f.submit class: 'ransack-search-button' %>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Tools</th>
+        </tr>
+      </thead>
+      <thead>
+        <tr>
+          <th><%= f.search_field :name_cont, placeholder: 'Filter' %></th>
+          <th><%= link_to 'Reset Search', substrates_path, class: 'btn btn-xs btn-default reset' %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @substrates.each do |substrate| %>
+          <tr>
+            <td><%= substrate.name %></td>
+            <td class="col-md-1" style="text-align:center">
+              <%= link_to 'Show', substrate, class: 'btn btn-xs btn-success' %>
+              <%= link_to 'Edit', edit_substrate_path(substrate), class: 'btn btn-xs btn-success' %>
+              <%= link_to 'Delete', substrate, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <%= paginate @substrates %>
+
+</div>
+<br>

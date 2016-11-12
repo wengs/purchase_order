@@ -1,0 +1,183 @@
+h2 {
+  font-size: 22px;
+  font-weight: 200;
+}
+
+.edit-form {
+  float: left;
+}
+
+label {
+  display: block;
+  float: left;
+  clear: right;
+  padding-top: 10px;
+}
+
+input.string, input.numeric.decimal.optional, input.numeric.integer, input.file.optional, input.date-input-inline, input[type="search"], input[type="text"], select, textarea {
+  display: block;
+  clear:both;
+  font-size: 14px;
+  border:1px solid #7fb239;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  height: 24px;
+  width: 100%;
+  padding-left:10px;
+}
+
+textarea {
+  height: 100px;
+}
+
+.input-group {
+  clear:left;
+  width: 100%;
+}
+
+span.input-group-addon {
+  width: 100% !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  border: none !important;
+}
+
+.date-input-inline {
+  position: relative;
+  padding-left:10px;
+  height: 24px;
+  float: left;
+}
+
+.fa.fa-calendar {
+  position: absolute;
+  font-size: 18px;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  border-left: 1px solid #7fb239;
+  -moz-border-top-right-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 2px 5px 1px 5px;
+  background-color: #e5e5e5;
+}
+
+.fa.fa-calendar:hover {
+  color: #8ec640;
+}
+
+@mixin md-round-button {
+  font-size:14px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  height: 34px;
+  width: 120px;
+  text-align: center;
+}
+
+@mixin green-md-round-button {
+  @include md-round-button;
+  border:1px solid #8ec640;
+  background-color:#8ec640;
+  color:#ffffff;
+}
+
+@mixin white-md-round-button {
+  @include md-round-button;
+  border:1px solid #8ec640;
+  background-color:#ffffff;
+  color:#000000;
+}
+
+.submit-button {
+  @include green-md-round-button;
+  position: relative;
+  display: inline-block;
+}
+
+.submit-button:hover {
+  background-color:#79a839;
+  cursor:pointer;
+}
+
+.btn.btn-md.btn-default.cancel-button {
+  @include white-md-round-button;
+  position: absolute;
+  top: 0px;
+  left: 150px;
+}
+
+.btn.btn-md.btn-default.cancel-button:hover {
+  background-color:#cccccc;
+  cursor:pointer;
+}
+
+.btn.btn-md.btn-default.green-button {
+  @include green-md-round-button;
+}
+
+.btn.btn-md.btn-default.green-button:hover {
+  background-color:#79a839;
+  cursor:pointer;
+}
+
+.nav.nav-tabs a {
+  background-color: #8ec640;
+}
+
+.nav.nav-tabs a:hover {
+  background-color: #8ec640;
+}
+
+.tab-content {
+  width: 1200px;
+}
+
+
+
+textarea[name="po[shipping_instructions]"] {
+  height: 200px;
+}
+
+#po-details table td {
+  vertical-align: top;
+}
+
+#graphics-list, #graphics-list-top-scroll-bar, #pos-list, #pos-list-top-scroll-bar {
+  overflow-x: scroll;
+}
+
+#graphics-list-top-scroll-bar div, #pos-list-top-scroll-bar div {
+  height: 20px;
+}
+
+#q_quantity_eq, #q_number_of_versions_eq {
+  width:20%;
+  display: inline-block;
+}
+
+#graphic-tools a.btn {
+  margin-top: 5px;
+}
+
+.inline-checkbox-label {
+  margin-top: 5px;
+}
+
+tr a.download-button {
+  margin-left: 10px;
+}
+
+ul#po-list-flags-legend {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+}
+
+ul#po-list-flags-legend li {
+  float: left;
+  padding-right: 20px;
+}

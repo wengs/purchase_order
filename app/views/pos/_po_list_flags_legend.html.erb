@@ -1,0 +1,8 @@
+<ul id="po-list-flags-legend">
+  <% if current_user.io_user? || current_user.admin? %>
+    <li><button type="button" class="btn btn-success"></button> <%= t(:ready_for_quote) %></li>
+    <li><button type="button" class="btn btn-info"></button> <%= t(:graphic_amended) %></li>
+  <% end %>
+  <li><button type="button" class="btn btn-danger"></button> <%= t(:information_required) %></li>
+  <li><button type="button" class="btn btn-warning"></button> <%= t(:files_needed) %></li>
+</ul>

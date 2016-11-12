@@ -1,0 +1,9 @@
+<%= form_for graphic do |f| %>
+  <div class="modal-body">
+    <%= render partial: "layouts/partials/graphic_form_modals/graphic_form_fields", locals: { f: f } %>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Submit" %>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+<% end %>

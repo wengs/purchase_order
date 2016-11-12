@@ -1,0 +1,4 @@
+<hr>
+<h4>Proof of Delivery <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="<%= t(:proof_of_delivery) %>"></i></h4>
+<%= render partial: "pos/fields/delivered_at", locals: { f: f, disabled: disabled } %>
+<%= render partial: 'pos/fields/receiver', locals: { f: f, disabled: disabled } %>

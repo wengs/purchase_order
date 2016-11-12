@@ -1,0 +1,82 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  item_created: "Item Created"
+  ready_for_quote: "Ready for Quote"
+  quote_submitted: "Quote Submitted"
+  po_provided: "PO Provided"
+  files_needed: "Files Needed"
+  in_production: "In Production"
+  shipped: "Shipped"
+  received: "Received"
+  submitted_for_invoice: "Invoiced"
+  graphic_amended: "Graphic Amended"
+  information_required: "Information Required"
+  in_invoicing: "In Invoicing"
+
+  simple_form:
+   labels:
+    po:
+      milestone: "Status"
+      notes_information_required: "Notes (Information Required)"
+      notes_file_needed: "Notes (Files Needed)"
+      entered_by: "Entered By"
+  activerecord:
+    models:
+      milestone: "Status"
+      po: "PO"
+      graphic: "Graphic"
+    attributes:
+      po:
+        event_name: "Event Name"
+        job_code: "Job #"
+        po_code: "PO #"
+        shipped_at: "Ship Date"
+        delivered_at: "Deliver Date Time"
+        shipping_insstructions: "Shipping Instructions"
+        purchase_order: "Purchase Order"
+        user: "Entered By"
+        ready_for_quote: "Ready for Quote"
+        information_required: "Information Required"
+        files_needed: "Files Needed"
+        in_production: "In Production"
+        notes_in_production: "Production Notes"
+        due_date: 'Due Date'
+        in_invoicing: 'In Invoicing'
+      graphic:
+        side: "Sides"
+        hardware_price: "Price (item)"
+
+  quote_needed: "A Quote is needed to change status to 'Quote Submitted'. Click 'Back' to return to the PO list, then click 'Edit' to upload a Quote."
+  purchase_order_needed: "A Purchase Order is needed to change status to 'PO Provided'. Click 'Back' to return to the PO list, then click 'Edit' to upload a Purchase Order."
+  invoice_needed: "An Invoice is needed to change status to 'Invoice Submitted'. Click 'Back' to return to the PO list, then click 'Edit' to upload an Invoice."
+  current_status: "Current status of this graphic."
+  change_status: "Select from dropdown to change this PO status."
+  tracking_number: "Enter a Tracking Number for this shipment. This also enables the Proof of Delivery fields."
+  proof_of_delivery: "The fields Delivered Date & Time and Receiver can be entered when there is a Tracking Number present."
+  notes_production_tips: "Specify graphics that are In Production while the status of this PO is Files Needed."
+
+  admin: "IO Admin"
+  io_tester: "IO Tester"
+  io_user: "IO User"
+  client_admin: "Client Admin"
+  client_user: "Client User"

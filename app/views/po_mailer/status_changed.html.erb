@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title><%= @po.po_code%> is Ready for Quote.</title>
+    <style type="text/css" media="screen">
+      body {font-family: "Trebuchet MS", verdana, arial, helvetica, sans-serif;}
+
+      .group-info {
+        border: 2px solid #8ec640;
+        padding: 4px;
+        margin: 2px;
+        width:420px;
+      }
+
+    </style>
+  </head>
+
+  <body id="status_changed.html" onload="">
+    Hi,<br /><br />
+    <p>
+      The status of PO <b>#<%= @po.po_code%></b> is changed to <i><b><%= t(@po.milestone.name) %></b></i>
+      <br/><br/>
+      Changed at: <b><%= @po.updated_at.strftime('%m/%d/%Y %I:%M %p') %></b>
+      <br/><br/>
+      Please open <%= edit_po_url(@po.id) %> to see more details.
+    </p><br />
+    <i>Regards,</i><br/>
+    <i>The Digital Solutions Team</i>
+  </body>
+</html>

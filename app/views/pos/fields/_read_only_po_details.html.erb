@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= f.input :event_name, disabled: true %>
+  </div>
+</div>
+
+<div class="col-md-2">
+  <div class="row">
+    <%= f.input :job_code, disabled: true %>
+    <%= f.input :po_code, disabled: true %>
+    <%= f.label :price %>
+    <div class="input-group">
+      <span class="input-group-addon" style="width: 20px !important;">$</span>
+      <%= f.input :price, label: false, as: :decimal, input_html: {value: f.object.price || '0.00'}, disabled: true %>
+    </div>
+
+    <%= label_tag :milestone do %>
+      Current Status <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="<%= t(:current_status) %>"></i>
+    <% end %>
+    <%= f.input_field :milestone, label: false, disabled: true, value: t(po.milestone.name) if po.milestone %>
+
+    <label class="text optional" for="po_notes_information_required">Notes <span class="text-red">(Information Required)</span></label>
+    <%= f.input :notes_information_required, as: :text, label: false, disabled: true %>
+  </div>
+</div>
+
+<div class="col-md-2 col-md-offset-1">
+  <div class="row">
+    <%= render partial: 'pos/fields/user', locals: { f: f, disabled: true } %>
+    <hr>
+    <% if f.object.quote.present? %>
+      <%= link_to "Quote #{File.basename(po.quote.to_s)} / Download Quote", po_quote_download_path(po), class: 'btn btn-xs btn-primary' %>
+    <% else %>
+      No Quote File Uploaded <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="<%= t(:quote_needed) %>"></i>
+    <% end %>
+    <hr>
+    <% if f.object.purchase_order.present? %>
+      <%= link_to "PO #{File.basename(po.purchase_order.to_s)} / Download PO", po_purchase_order_download_path(po), class: 'btn btn-xs btn-primary' %>
+    <% else %>
+      No Purchase Order File Uploaded <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="<%= t(:purchase_order_needed) %>"></i>
+    <% end %>
+    <hr>
+    <% if f.object.invoice.present? %>
+      <%= link_to "Invoice #{File.basename(po.invoice.to_s)} / Download Invoice", po_invoice_download_path(po), class: 'btn btn-xs btn-primary' %>
+    <% else %>
+      No Invoice File Uploaded <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="<%= t(:invoice_needed) %>"></i>
+    <% end %>
+    <hr>
+
+      <label class="text optional" for="po_notes_file_needed">Notes <span class="text-red">(File Needed)</span></label>
+      <%= f.input :notes_file_needed, as: :text, label: false, disabled: true %>
+  </div>
+</div>
+
+<div class="col-md-2 col-md-offset-1">
+  <div class="row">
+    <%= f.input :shipping_instructions, as: :text, label: "Shipping Instructions", disabled: true %>
+
+    <%= render partial: 'pos/fields/due_date', locals: { f: f, disabled: true } %>
+
+    <%= f.label :shipped_at %>
+    <div id="datetimepicker4" class="input-group">
+      <span class="input-group-addon">
+        <%= f.text_field :shipped_at, class: "date-input-inline", style: "width:100%;", disabled: true %>
+        <span class="fa fa-calendar"></span>
+      </span>
+    </div>
+
+    <%= f.label :tracking_number do %>
+      Tracking Number <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="<%= t(:tracking_number) %>"></i>
+    <% end %>
+    <%= f.input :tracking_number, as: :string, label: false, disabled: true %>
+  </div>
+</div>
+
+<div class="col-md-2 col-md-offset-1">
+  <div class="row">
+    <% if current_user.client? || current_user.admin? %>
+      <%= f.input :ready_for_quote, wrapper: :inline_checkbox, disabled: true %>
+    <% end %>
+    <% if current_user.io_user? || current_user.admin? %>
+      <%= f.input :information_required, wrapper: :inline_checkbox, disabled: true %>
+      <%= f.input :files_needed, wrapper: :inline_checkbox, disabled: true %>
+    <% end %>
+    <%= f.input :in_production, wrapper: :inline_checkbox, disabled: true %>
+    <%= f.input :in_invoicing, wrapper: :inline_checkbox, disabled: true %>
+    <%= f.label :notes_production do %>
+      Production Notes <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="<%= t(:notes_production_tips) %>"></i>
+    <% end %>
+    <%= f.input :notes_production, as: :text, label: false, disabled: true %>
+    <%= render partial: 'pos/fields/po_pod', locals: { f: f, disabled: true } %>
+  </div>
+</div>

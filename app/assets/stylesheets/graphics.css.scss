@@ -1,0 +1,40 @@
+//= require pos
+
+#graphic-po-details table td div.input {
+  width: 80%;
+}
+
+#graphic-po-details table td .event-name {
+  width: 90% !important;
+}
+
+#graphic-po-details table {
+  width: 100%;
+}
+
+
+// graphic-details table
+#graphic-details table {
+  width: 100%;
+}
+
+#graphic-details table td div.input textarea {
+  width: 98%;
+  resize: none;
+}
+
+#graphic-details table td div.input {
+  width: 80%;
+}
+
+#graphic-details table td .description, #graphic-details table td .finishing{
+  width: 90% !important;
+}
+
+#graphic-details table td .quantity, #graphic-details table td .number-of-versions {
+  width: 70% !important;
+}
+
+span.error {
+  color: red;
+}

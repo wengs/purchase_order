@@ -1,0 +1,10 @@
+<%= render partial: "layouts/partials/bootstrap_alerts" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @substrate.name %>
+</p>
+<div class="actions">
+  <%= link_to 'Edit', edit_substrate_path(@substrate), class: "btn btn-md btn-default green-button pull-left", style: "margin-right: 20px;" %>
+  <%= link_to 'Back', substrates_path, class: 'btn btn-md btn-default pull-left' %>
+</div>

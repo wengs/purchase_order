@@ -1,0 +1,2 @@
+module GraphicTypesHelper
+end

@@ -1,0 +1,25 @@
+<div class="col-md-4">
+  <%= simple_form_for substrate, url: { action: action, q: params[:q] ? params[:q] : "" }, html: { multipart: true } do |f| %>
+    <% if substrate.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(substrate.errors.count, "error") %> prohibited this substrate from being saved:</h2>
+
+        <ul>
+        <% substrate.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: "manage" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit action == "update" ? "Update" : "Create", class: "submit-button pull-left", style: "margin-right: 20px" %>
+      <%= link_to 'Back', substrates_path, class: 'btn btn-md btn-default pull-left' %>
+    </div>
+  <% end %>
+</div>

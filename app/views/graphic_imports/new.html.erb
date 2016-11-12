@@ -1,0 +1,9 @@
+<%= render partial: "layouts/partials/bootstrap_alerts" %>
+<br />
+Please import a csv/ excel file. The first row of the spreadsheet needs to be the header and to match the database attributes of the Graphic table.
+<br />
+<br />
+<%= simple_form_for :graphic_imports, url: graphic_imports_path, method: 'post' do |f| %>
+  <%= f.input :file, as: :file  %><br /><br />
+  <%= f.submit 'Submit' %>
+<% end %>

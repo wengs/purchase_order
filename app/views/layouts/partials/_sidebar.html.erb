@@ -1,0 +1,74 @@
+<!-- START Sidebar (left)-->
+<div class="aside-inner">
+  <nav class="sidebar" data-sidebar-anyclick-close="">
+    <!-- START sidebar nav-->
+    <ul class="nav">
+       <!-- Iterates over all sidebar items-->
+      <li class="nav-heading">
+        <span>Main Navigation</span>
+      </li>
+
+      <li data-toggle="tooltip", data-placement="right", title="Manage POs">
+        <%= link_to pos_path do %>
+          <em class="icon-home"></em>
+          <span>POs</span>
+        <% end %>
+      </li>
+
+      <li data-toggle="tooltip", data-placement="right", title="IO Link">
+        <%= link_to io_links_path do %>
+          <em class="fa fa-folder-open-o"></em>
+          <span>IO Link</span>
+        <% end %>
+      </li>
+
+      <% if current_user.admin? %>
+        <li data-toggle="tooltip", data-placement="right", title="Manage Substrates">
+           <%= link_to substrates_path do %>
+              <em class="icon-layers"></em>
+              <span>Substrates</span>
+           <% end %>
+        </li>
+        <li data-toggle="tooltip", data-placement="right", title="Manage Sides">
+          <%= link_to sides_path do %>
+            <em class="fa fa-cubes"></em>
+            <span>Sides</span>
+          <% end %>
+        </li>
+        <li data-toggle="tooltip", data-placement="right", title="Manage Users">
+          <%= link_to users_path do %>
+            <em class="icon-users"></em>
+            <span>Users</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <hr>
+
+      <li data-toggle="tooltip", data-placement="right", title="Activity Feed">
+        <%= link_to activity_feed_timeline_path do %>
+           <em class="fa fa-dashboard"></em>
+           <span>Activity Feed</span>
+        <% end %>
+      </li>
+
+      <li data-toggle="tooltip", data-placement="right", title="Account Settings">
+        <%= link_to edit_user_registration_path(current_user) do %>
+           <em class="icon-user"></em>
+           <span><%= current_user.name %></span><br>
+              <span style="padding-left: 30px"><%= t current_user.role.name %></span>
+           </span>
+        <% end %>
+      </li>
+
+      <li data-toggle="tooltip", data-placement="right", title="Log Out">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <em class="icon-logout"></em>
+          <span>Log Out</span>
+        <% end %>
+      </li>
+    </ul>
+    <!-- END sidebar nav-->
+  </nav>
+</div>
+<!-- END Sidebar (left)-->

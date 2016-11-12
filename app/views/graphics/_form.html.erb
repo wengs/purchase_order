@@ -1,0 +1,19 @@
+<%= simple_form_for graphic, url: { action: action }, html: { multipart: true } do |f| %>
+  <div id="graphic-po-details">
+    <%= render partial: 'graphics/fields/po_details', locals: { f: f } %>
+  </div>
+  <hr />
+  <div id="graphic-details">
+    <%= render partial: 'graphics/fields/graphic_details', locals: { f: f } %>
+  </div>
+  <br class="clear-both"/>
+  <hr />
+  <div class="actions">
+    <%= link_to "Cancel", edit_po_path(graphic.po), class: 'btn btn-md btn-default' %>
+    <%= f.submit "Save", class: "submit-button", style: "margin-left: 20px;" %>
+  </div>
+<% end %>
+
+
+
+

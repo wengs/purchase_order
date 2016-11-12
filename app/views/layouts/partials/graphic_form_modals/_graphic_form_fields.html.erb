@@ -1,0 +1,84 @@
+<div class="row">
+  <!-- Left Half -->
+
+  <div class="col-md-5">
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.label :description do %>
+          Description <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="Please enter a brief description"></i>
+        <% end %>
+        <%= f.text_field :description, placeholder: "Please enter description" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.label :quantity do %>
+          Quantity <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="How many pieces of this graphic?"></i>
+        <% end %>
+        <%= f.number_field :quantity, placeholder: "e.g. 2" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :height do %>
+          Height <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="Height in inches"></i>
+        <% end %>
+        <%= f.text_field :height, placeholder: "e.g. 12.00" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :width do %>
+          Width <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="Width in inches"></i>
+        <% end %>
+        <%= f.text_field :width, placeholder: "e.g. 12.00" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :substrate_id do %>
+          Substrate <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="Select Substrate from dropdown"></i>
+        <% end %>
+        <%= f.collection_select :substrate_id, Substrate.all, :id, :name, {include_blank: "-- Select --"} %>
+      </div>
+
+      <div class="col-md-6">
+        <%= f.label :side_id do %>
+          Side <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="Select Side from dropdown"></i>
+        <% end %>
+        <%= f.collection_select :side_id, Side.all, :id, :name, {include_blank: "-- Select --"} %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= label_tag :finishing do %>
+          Finishing <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="Selected Finishing"></i>
+        <% end %>
+        <%= f.text_field :finishing, placeholder: 'Enter Finishing' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.label :note do %>
+          Copy/Content Notes <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="Please enter Copy/Content Notes"></i>
+        <% end %>
+        <%= f.text_area :note, placeholder: "Please enter Copy/Content" %>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right Half -->
+
+  <div class="col-md-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field">
+          <%= f.label :hardware_price do %>
+            Price <i class="fa fa-question-circle" data-toggle="tooltip", data-placement="top", title="Hardware price is automatically calculated"></i>
+          <% end %>
+          <%= f.text_field :hardware_price %>
+        </div>
+      </div>
+    </div>
+</div>

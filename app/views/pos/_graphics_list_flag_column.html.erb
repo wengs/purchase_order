@@ -1,0 +1,5 @@
+<% if graphics.map(&:information_required).include?(true) && graphic.information_required %>
+  <td class="text-centered"><i class="fa fa-flag fa-3x text-red"></i></td>
+<% elsif graphics.map(&:files_needed).include?(true) && graphic.files_needed %>
+  <td class="text-centered"><i class="fa fa-flag fa-3x text-red"></i></td>
+<% end %>

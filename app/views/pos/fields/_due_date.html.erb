@@ -1,0 +1,8 @@
+<%= f.label :due_date %>
+  <div id="datetimepicker4" class="input-group">
+    <span class="input-group-addon">
+      <%= f.text_field :due_date, class: "date-input-inline", style: "width:100%;", disabled: disabled %>
+      <span class="fa fa-calendar"></span>
+    </span>
+  </div>
+<%= f.error :due_date %>

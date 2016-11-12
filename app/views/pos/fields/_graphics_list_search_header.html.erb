@@ -1,0 +1,14 @@
+<thead>
+  <th><%= link_to 'Reset', edit_po_path(params[:id]), class: 'btn btn-xs btn-default reset' %></th>
+  <% if graphics.map(&:information_required).include?(true) || graphics.map(&:files_needed).include?(true) %>
+    <th></th>
+  <% end %>
+  <th><%= f.search_field :description_cont, placeholder: 'Filter' %></th>
+  <th><%= f.search_field :width_eq, placeholder: 'Filter' %></th>
+  <th><%= f.search_field :height_eq, placeholder: 'Filter' %></th>
+  <th><%= f.search_field :substrate_name_cont, placeholder: 'Filter' %></th>
+  <th><%= f.search_field :finishing_cont, placeholder: 'Filter' %></th>
+  <th><%= f.search_field :quantity_eq, placeholder: '0' %> each of <%= f.search_field :number_of_versions_eq, placeholder: '10' %><%= %></th>
+  <th><%= f.select :side_id_eq, Side.all.map { |side| [side.name, side.id] }, { include_blank: 'All'}, placeholder: 'Filter', class: "ransack-search-select" %></th>
+  <th><%= f.search_field :hardware_price_eq, placeholder: 'Filter' %></th>
+</thead>

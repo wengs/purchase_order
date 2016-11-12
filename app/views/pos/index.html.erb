@@ -1,0 +1,110 @@
+<%= render partial: "layouts/partials/bootstrap_alerts" %>
+
+<h3>POs</h3>
+<br>
+<% if current_user.admin?%>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= link_to new_po_import_path, class: 'btn btn-md btn-success' do %>
+        Import POs
+      <% end %>
+        <%= link_to new_graphic_import_path, class: 'btn btn-md btn-success' do %>
+        Import Graphics
+      <% end %>
+    </div>
+  </div>
+  <br />
+<% end %>
+<div class="row">
+  <div class="col-md-2">
+    <!-- New Graphic button -->
+    <%= link_to new_po_path, class: 'btn btn-md btn-success' do %>
+      <i class="fa fa-plus"></i> New PO
+    <% end %>
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <%= render partial: "po_list_flags_legend" %>
+  </div>
+  <div class="btn-group pull-right">
+    <%= link_to 'Active POs', pos_path(invoiced: 0), class: "btn btn-md btn-#{@invoiced.to_i.zero? ? 'success' : 'default'}" %>
+    <%= link_to 'Invoiced POs', pos_path(invoiced: 1), class: "btn btn-md btn-#{!@invoiced.to_i.zero? ? 'success' : 'default'}" %>
+  </div>
+</div>
+
+<br class="clear"/>
+<br>
+<%= paginate @pos %>
+<!-- Graphics listing -->
+<div id="pos-list-top-scroll-bar">
+  <div></div>
+</div>
+<div id="pos-list">
+  <div class="media-body">
+    <%= search_form_for @q do |f| %>
+      <%= f.submit class: 'ransack-search-button' %>
+      <%= f.hidden_field :invoice_present, value: @invoiced %>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Tools</th>
+              <th>Job #</th>
+              <th>PO #</th>
+              <th>Event Name</th>
+              <th>Status</th>
+              <th>Price</th>
+              <th><%= Po.human_attribute_name(:due_date) %></th>
+              <th><%= Po.human_attribute_name(:shipped_at) %></th>
+              <th><%= Po.human_attribute_name(:delivered_at) %></th>
+              <th>Shipping Instructions</th>
+              <th>Entered By</th>
+            </tr>
+
+          </thead>
+          <thead>
+            <th><%= link_to 'Reset', pos_path, class: 'btn btn-xs btn-default reset' %></th>
+            <th><%= f.search_field :job_code_cont, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :po_code_cont, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :event_name_cont, placeholder: 'Filter' %></th>
+            <th><%= f.collection_select :milestone_id_eq, Milestone.all.order(:name), :id, :name_translated, {:include_blank => 'All'}, {:onchange => 'milestoneSearch()'} %></th>
+            <th><%= f.search_field :price_eq, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :due_date_eq, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :shipped_at_eq, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :delivered_at_eq, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :shipping_instructions_cont, placeholder: 'Filter' %></th>
+            <th><%= f.search_field :user_name_cont, placeholder: 'Filter' %></th>
+          </thead>
+
+          <tbody>
+            <% @pos.each do |po| %>
+              <tr class="<%= milestone_flag_color(po.milestone.name.intern) if po.milestone %>">
+                <td>
+                  <%= link_to po_path(po), class: 'btn btn-xs btn-success' do %>
+                    <i class="fa fa-eye"></i> View
+                  <% end %>
+                  <%= link_to edit_po_path(po), class: 'btn btn-xs btn-success' do %>
+                    <i class="fa fa-edit"></i> Edit
+                  <% end %>
+                </td>
+                <td><%= po.job_code %></td>
+                <td><%= po.po_code %></td>
+                <td><%= po.event_name %></td>
+                <td><%= t(po.milestone.name) if po.milestone %></td>
+                <td class="text-centered"><%= number_to_currency(po.price) %></td>
+                <td><%= po.due_date %></td>
+                <td><%= po.shipped_at %></td>
+                <td><%= format_date_time(po.delivered_at) if po.delivered_at %></td>
+                <td><%= po.shipping_instructions %></td>
+                <td><%= po.user.name if po.user %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= paginate @pos %>
+
+<br>

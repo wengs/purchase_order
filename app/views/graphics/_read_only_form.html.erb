@@ -1,0 +1,14 @@
+<%= simple_form_for graphic, url: { action: action }, html: { multipart: true } do |f| %>
+  <div id="graphic-po-details">
+    <%= render partial: 'graphics/fields/po_details', locals: { f: f } %>
+  </div>
+  <hr />
+  <div id="graphic-details">
+    <%= render partial: 'graphics/fields/read_only_graphic_details', locals: { graphic: graphic, f: f } %>
+  </div>
+  <br class="clear-both"/>
+  <hr />
+  <div class="actions">
+    <%= link_to "Back", :back, class: 'btn btn-md btn-default green-button pull-left' %>
+  </div>
+<% end %>

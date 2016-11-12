@@ -1,0 +1,9 @@
+<%= render partial: "layouts/partials/bootstrap_alerts" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @milestone.name %>
+</p>
+
+<%= link_to 'Edit', edit_milestone_path(@milestone) %> |
+<%= link_to 'Back', milestones_path %>

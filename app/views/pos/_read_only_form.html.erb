@@ -1,0 +1,10 @@
+<%= simple_form_for po, url: { q: params[:q] ? params[:q] : "" }, html: { multipart: true } do |f| %>
+  <div id="po-details" class="pull-left col-xs-10">
+    <%= render partial: 'pos/fields/read_only_po_details', locals: { po: po, f: f } %>
+  </div>
+  <br class="clear-both"/>
+  <br />
+  <div class="actions"  style= "margin-left: 18px;">
+    <%= link_to "Back", pos_path, class: 'btn btn-md btn-default green-button pull-left' %>
+  </div>
+<% end %>
