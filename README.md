@@ -16,7 +16,7 @@ A typical workflow for a PO is the following:
 8. In Invoicing - Vendor is preparing for invoicing.
 9. Submitted for Invoice - The vendor submitted an invoice for the purchase order.
 
-To see the actual implementation of the above workflows, please see `lib/po_milestone_generator.rb'
+To see the actual implementation of the above workflows, please see ```lib/po_milestone_generator.rb```
 
 ## Dependencies
 - Ruby  2.2.4
